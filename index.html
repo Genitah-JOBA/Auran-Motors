@@ -249,7 +249,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
 .maison-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,6vw,96px);align-items:center}
 .m-media{position:relative}
 .m-media .frame{position:absolute;inset:-22px 22px 22px -22px;border:1px solid var(--or);pointer-events:none;opacity:.55}
-.m-media img{aspect-ratio:3/2;object-fit:cover;width:100%;position:relative}
+.m-media img{aspect-ratio:16/9;object-fit:cover;width:100%;height:auto;position:relative}
 .m-media figcaption{position:absolute;left:0;bottom:18px;background:rgba(10,11,13,.78);backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--cendre);font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:9px 16px}
 .m-copy .eyebrow{margin-bottom:20px}
 .m-copy h2{max-width:15ch}
@@ -355,7 +355,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
 .c-item a:hover{color:var(--or)}
 .c-item .sub{font-size:12.5px;color:var(--cendre)}
 .c-media{margin-top:36px;position:relative;max-width:520px}
-.c-media img{aspect-ratio:16/10;object-fit:cover;width:100%;object-position:center 62%}
+.c-media img{aspect-ratio:16/10;object-fit:cover;width:100%;height:auto;object-position:center 62%}
 .c-media figcaption{position:absolute;left:0;bottom:16px;background:rgba(10,11,13,.8);border:1px solid var(--line);color:var(--cendre);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:8px 14px}
 .form-card{border:1px solid var(--line-soft);background:var(--plomb);padding:clamp(28px,4vw,52px)}
 .form-card h3{font-size:28px;margin-bottom:8px}
@@ -404,9 +404,9 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
   radial-gradient(90% 110% at 22% 50%,rgba(201,169,97,.08),transparent 55%),var(--plomb);
   border-bottom:1px solid var(--line-soft);min-height:100svh;display:flex;align-items:center}
 .featured-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,90px);align-items:center;width:100%}
-.featured-media{position:relative;height:min(100svh,960px);display:flex}
+.featured-media{position:relative;height:min(72svh,760px);display:flex}
 .featured-media .frame{position:absolute;inset:26px 26px 26px -22px;border:1px solid var(--or);pointer-events:none;opacity:.55}
-.featured-media img{height:100%;width:100%;object-fit:contain;object-position:center;position:relative}
+.featured-media img{height:100%;width:100%;object-fit:cover;object-position:center;position:relative}
 .featured-badge{position:absolute;top:18px;left:18px;z-index:2;background:var(--or);color:var(--obs);font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:7px 12px;font-weight:500}
 .featured-copy .eyebrow{margin-bottom:20px}
 .featured-copy h2{max-width:14ch}
@@ -718,7 +718,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
     <div class="container maison-grid">
       <figure class="m-media reveal">
         <span class="frame" aria-hidden="true"></span>
-        <img src="assets/img/lifestyle/atelier.jpg" alt="Atelier de préparation AURAN MOTORS à Antananarivo" width="1920" height="1440" loading="lazy" decoding="async">
+        <img src="assets/img/lifestyle/atelier.jpg" alt="Atelier de préparation AURAN MOTORS à Antananarivo" width="1920" height="1280" loading="lazy" decoding="async">
         <figcaption>La préparation avant chaque livraison</figcaption>
       </figure>
       <div class="m-copy reveal" style="--d:.1s">
@@ -1043,7 +1043,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
         </div>
 
         <figure class="c-media">
-          <img src="assets/img/lifestyle/detail.jpg" alt="Détail de préparation d'un véhicule à l'atelier AURAN MOTORS, Antananarivo" width="1920" height="1440" loading="lazy" decoding="async">
+          <img src="assets/img/lifestyle/detail.jpg" alt="Détail de préparation d'un véhicule à l'atelier AURAN MOTORS, Antananarivo" width="1920" height="1280" loading="lazy" decoding="async">
           <figcaption>L'atelier — avant chaque livraison</figcaption>
         </figure>
       </div>
@@ -1097,7 +1097,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
             <p class="err" role="alert"></p>
           </div>
           <button class="btn btn-or" type="submit">Envoyer ma demande</button>
-          <p class="form-legal">Soumission traitée localement, côté client — à brancher sur votre boîte mail ou un CRM avant mise en ligne.</p>
+          <p class="form-legal">À la soumission, votre application mail s'ouvre avec la demande déjà rédigée — il ne reste qu'à l'envoyer.</p>
         </form>
 
         <div class="form-success hidden" id="formSuccess" tabindex="-1">
@@ -1288,7 +1288,6 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
 
   /* form validation */
   var form = document.getElementById("contactForm");
-  var success = document.getElementById("formSuccess");
   if(form){
     form.addEventListener("submit", function(e){
       e.preventDefault();
@@ -1324,9 +1323,20 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
         return;
       }
 
-      form.classList.add("hidden");
-      success.classList.remove("hidden");
-      success.focus();
+      var mailtoEmail = "jobanitah@gmail.com";
+      var subject = "Demande AURAN MOTORS — " + nom.value.trim();
+      var budgetV = (document.getElementById("budget").value || "Pas encore défini");
+      var body =
+        "Demande de contact envoyée depuis le site AURAN MOTORS\n\n" +
+        "Nom : " + nom.value.trim() + "\n" +
+        "Téléphone : " + tel.value.trim() + "\n" +
+        (email.value.trim() ? "Email : " + email.value.trim() + "\n" : "") +
+        "Demande : " + besoinF.value + "\n" +
+        "Budget indicatif : " + budgetV + "\n\n" +
+        "Message :\n" + message.value.trim();
+      window.location.href = "mailto:" + mailtoEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      var note = document.querySelector(".form-legal");
+      if(note) note.textContent = "Votre application mail s'est ouverte avec la demande pré-remplie — vérifiez le brouillon puis envoyez-le.";
       var box = document.getElementById("formCard");
       if(box) box.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
     });
