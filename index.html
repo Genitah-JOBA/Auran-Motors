@@ -29,7 +29,7 @@
   "image": "assets/img/hero.jpg",
   "url": "https://www.auranmotors.mg",
   "description": "Showroom de voitures premium et exclusives à Antananarivo : coupés sportifs, GT et grandes électriques — Alpine, Porsche, Tesla, Mercedes-Benz, Audi. Sélection privée, essai accompagné sur rendez-vous, préparation en atelier, import mondial et reprise de véhicules d'exception.",
-  "telephone": "+261341234567",
+  "telephone": "+261381461105",
   "priceRange": "sur demande",
   "areaServed": ["Antananarivo", "Madagascar"],
   "address": {
@@ -44,7 +44,7 @@
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "08:30", "closes": "18:30" }
   ],
-  "sameAs": ["https://wa.me/261341234567"]
+  "sameAs": ["https://wa.me/261381461105"]
 }
 </script>
 
@@ -244,10 +244,12 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
 @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ---------- la maison ---------- */
+.maison{position:relative;background:
+  radial-gradient(90% 110% at 78% 50%,rgba(201,169,97,.07),transparent 55%),var(--obs)}
 .maison-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,6vw,96px);align-items:center}
 .m-media{position:relative}
 .m-media .frame{position:absolute;inset:-22px 22px 22px -22px;border:1px solid var(--or);pointer-events:none;opacity:.55}
-.m-media img{aspect-ratio:4/3;object-fit:cover;width:100%;position:relative}
+.m-media img{aspect-ratio:3/2;object-fit:cover;width:100%;position:relative}
 .m-media figcaption{position:absolute;left:0;bottom:18px;background:rgba(10,11,13,.78);backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--cendre);font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:9px 16px}
 .m-copy .eyebrow{margin-bottom:20px}
 .m-copy h2{max-width:15ch}
@@ -275,6 +277,8 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
 .fleet-card{background:var(--obs);display:flex;flex-direction:column;padding:0;transition:background .3s}
 .fleet-card:hover{background:var(--plomb)}
 .fleet-card .media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--plomb)}
+.fleet-card.portrait .media{aspect-ratio:2/3}
+.fleet-card.square .media{aspect-ratio:1/1}
 .fleet-card .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .fleet-card:hover .media img{transform:scale(1.045)}
 .f-card-tag{
@@ -395,6 +399,131 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
 .foot-legal a:hover{color:var(--or)}
 .foot-end{border-top:1px solid var(--line-soft);padding:20px 0;font-size:12px;color:var(--cendre);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
+/* ---------- pièce maîtresse ---------- */
+.featured{position:relative;background:
+  radial-gradient(90% 110% at 22% 50%,rgba(201,169,97,.08),transparent 55%),var(--plomb);
+  border-bottom:1px solid var(--line-soft);min-height:100svh;display:flex;align-items:center}
+.featured-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,90px);align-items:center;width:100%}
+.featured-media{position:relative;height:min(100svh,960px);display:flex}
+.featured-media .frame{position:absolute;inset:26px 26px 26px -22px;border:1px solid var(--or);pointer-events:none;opacity:.55}
+.featured-media img{height:100%;width:100%;object-fit:contain;object-position:center;position:relative}
+.featured-badge{position:absolute;top:18px;left:18px;z-index:2;background:var(--or);color:var(--obs);font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:7px 12px;font-weight:500}
+.featured-copy .eyebrow{margin-bottom:20px}
+.featured-copy h2{max-width:14ch}
+.featured-specs{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
+.f-spec{padding:16px 18px;background:var(--obs)}
+.f-spec b{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cendre);font-weight:500}
+.f-spec span{display:block;margin-top:4px;color:var(--papier);font-size:15px;font-weight:400}
+.featured-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+
+/* ---------- actions carte : favoris / comparer ---------- */
+.f-card-actions{position:absolute;top:14px;right:14px;z-index:3;display:flex;gap:8px;opacity:0;transform:translateY(-4px);transition:opacity .3s ease,transform .3s var(--ease)}
+.fleet-card:hover .f-card-actions,.f-card-actions:focus-within{opacity:1;transform:none}
+@media (hover:none){.f-card-actions{opacity:1;transform:none}}
+.fa-btn{
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+  background:rgba(10,11,13,.82);backdrop-filter:blur(4px);border:1px solid var(--line);color:var(--papier);
+  transition:all .25s ease;
+}
+.fa-btn:hover{border-color:var(--or);color:var(--or)}
+.fa-btn svg{width:18px;height:18px}
+.fa-btn[aria-pressed="true"],.fa-btn.cmp-on{border-color:var(--or);color:var(--or);background:var(--or-soft)}
+.fa-btn[aria-pressed="true"] svg{fill:currentColor}
+.fa-btn[aria-label*="favoris"]{background:rgba(10,11,13,.82)}
+.fa-btn .c-add{display:block}
+.fa-btn .c-check{display:none}
+.fa-btn.cmp-on .c-add{display:none}
+.fa-btn.cmp-on .c-check{display:block}
+
+/* ---------- favoris ---------- */
+.fav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
+.fav-empty{padding:56px 30px;text-align:center;border:1px solid var(--line-soft);color:var(--cendre)}
+.fav-empty b{color:var(--or);font-weight:500}
+.fav-empty p{margin-inline:auto;margin-top:8px;font-size:14px}
+.fav-empty svg{width:30px;height:30px;color:var(--or);margin-inline:auto}
+.fav-trigger{position:relative;display:inline-flex;align-items:center;gap:8px;font-size:13.5px;letter-spacing:.08em;color:var(--cendre);font-weight:400;padding:6px 0}
+.fav-trigger:hover{color:var(--papier)}
+.fav-count{display:none;position:absolute;top:-3px;right:-12px;min-width:17px;height:17px;border-radius:9px;background:var(--or);color:var(--obs);font-size:10px;font-weight:600;align-items:center;justify-content:center;letter-spacing:0}
+.fav-count.on{display:flex}
+.fav-count-lg{display:none;min-width:22px;height:22px;border-radius:11px;background:var(--or);color:var(--obs);font-size:12px;font-weight:600;align-items:center;justify-content:center}
+.fav-count-lg.on{display:inline-flex}
+
+/* ---------- barre de comparaison ---------- */
+.compare-bar{
+  position:fixed;left:50%;bottom:22px;transform:translate(-50%,150%);z-index:85;
+  display:flex;align-items:center;gap:16px;padding:10px 12px 10px 18px;
+  background:rgba(17,19,22,.96);backdrop-filter:blur(10px);border:1px solid var(--line);
+  box-shadow:0 18px 50px rgba(0,0,0,.5);transition:transform .45s var(--ease);
+}
+.compare-bar.show{transform:translate(-50%,0)}
+.cb-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cendre);font-weight:500;white-space:nowrap}
+.cb-items{display:flex;gap:8px;align-items:center}
+.cb-item{position:relative;width:58px;height:44px}
+.cb-item img{width:100%;height:100%;object-fit:cover;border:1px solid var(--line-soft)}
+.cb-item button{position:absolute;top:-8px;right:-8px;width:19px;height:19px;background:var(--or);color:var(--obs);font-size:11px;line-height:1;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.cb-item button:hover{background:#d8bc7c}
+.compare-bar .btn{margin-left:2px}
+
+/* ---------- modal de comparaison ---------- */
+.compare-modal{position:fixed;inset:0;z-index:98;background:rgba(7,8,10,.9);backdrop-filter:blur(10px);display:none;align-items:flex-start;justify-content:center;padding:72px 20px 40px;overflow:auto}
+.compare-modal.open{display:flex;animation:cmFade .3s ease}
+@keyframes cmFade{from{opacity:0}to{opacity:1}}
+.cm-box{width:min(1080px,100%);background:var(--obs);border:1px solid var(--line-soft)}
+.cm-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 28px;border-bottom:1px solid var(--line-soft)}
+.cm-head h3{font-size:24px}
+.cm-head .small{font-size:12px;color:var(--cendre);letter-spacing:.04em}
+.cm-close{width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);color:var(--cendre);transition:all .25s;font-size:16px}
+.cm-close:hover{border-color:var(--or);color:var(--or)}
+.cm-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border-bottom:1px solid var(--line-soft)}
+.cm-col{padding:26px;border-right:1px solid var(--line-soft);display:flex;flex-direction:column;gap:16px}
+.cm-col:last-child{border-right:0}
+.cm-col img{aspect-ratio:16/10;object-fit:cover;width:100%;background:var(--plomb)}
+.cm-col .img-wrap{height:230px;overflow:hidden;background:var(--plomb)}
+.cm-col .img-wrap img{height:100%;object-fit:contain;aspect-ratio:auto}
+.cm-col h4{font-family:var(--serif);font-size:22px;color:var(--papier)}
+.cm-col .mk{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--or);font-weight:500}
+.cm-col-footer{margin-top:auto;padding-top:10px}
+.cm-col-footer .btn{width:100%}
+.cm-spec{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line-soft);font-size:13px}
+.cm-spec b{color:var(--cendre);font-weight:500;text-transform:uppercase;font-size:10.5px;letter-spacing:.14em}
+.cm-spec span{color:var(--papier);text-align:right}
+@media(max-width:680px){
+  .cm-col{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--line-soft)}
+  .cm-col:last-child{border-bottom:0}
+  .compare-bar{left:16px;right:16px;transform:translateY(150%);width:auto;flex-wrap:wrap;justify-content:center}
+  .compare-bar.show{transform:translateY(0)}
+  .compare-bar .btn{width:100%}
+}
+
+/* ---------- whatsapp flottant ---------- */
+.wa-fab{
+  position:fixed;right:22px;bottom:22px;z-index:84;width:56px;height:56px;border-radius:50%;
+  background:var(--or);color:var(--obs);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 34px rgba(201,169,97,.35);transition:transform .3s var(--ease);
+}
+.wa-fab:hover{transform:translateY(-3px) scale(1.05)}
+.wa-fab svg{width:28px;height:28px}
+.wa-fab::after{content:"";position:absolute;inset:-5px;border:1px solid var(--or);border-radius:50%;animation:waPulse 2.4s var(--ease) infinite;pointer-events:none}
+@keyframes waPulse{0%{transform:scale(.85);opacity:.7}70%{transform:scale(1.28);opacity:0}100%{opacity:0}}
+
+/* ---------- bandeau CTA ---------- */
+.cta-band{position:relative;border-top:1px solid var(--line-soft);background:
+  radial-gradient(80% 130% at 15% 0%,rgba(201,169,97,.12),transparent 55%),var(--plomb);
+  text-align:center;padding:110px 0 108px}
+.cta-band h2{font-size:clamp(38px,6vw,76px)}
+.cta-band h2 em{font-style:italic;color:var(--or)}
+.cta-band p{margin:20px auto 0;color:var(--cendre);max-width:52ch}
+.cta-actions{display:flex;justify-content:center;gap:16px;margin-top:38px;flex-wrap:wrap}
+
+/* ---------- réseaux sociaux ---------- */
+.socials{display:flex;gap:12px}
+.socials a{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line-soft);color:var(--cendre);transition:all .25s ease}
+.socials a:hover{border-color:var(--or);color:var(--or)}
+.socials svg{width:17px;height:17px}
+
+/* ---------- favori pop ---------- */
+@keyframes favPop{0%{transform:scale(.8)}55%{transform:scale(1.12)}100%{transform:scale(1)}}
+
 /* ---------- reveals ---------- */
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .75s ease,transform .85s var(--ease);transition-delay:var(--d,0s)}
 .reveal.in{opacity:1;transform:none}
@@ -410,19 +539,22 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
   .sig-cell{border-bottom:1px solid var(--line-soft)}
   .sig-grid .sig-cell:nth-child(3),.sig-grid .sig-cell:nth-child(4){border-bottom:0}
   .fleet-grid{grid-template-columns:repeat(2,1fr)}
+  .fav-grid{grid-template-columns:repeat(2,1fr)}
   .process-grid{grid-template-columns:repeat(2,1fr)}
-  .maison-grid,.import-grid,.contact-grid,.rachat-grid{grid-template-columns:1fr;gap:44px}
+  .maison-grid,.import-grid,.contact-grid,.rachat-grid,.featured-grid{grid-template-columns:1fr;gap:44px}
   .test-grid{grid-template-columns:1fr}
   .foot-top{grid-template-columns:1fr 1fr}
 }
 @media (max-width:680px){
   .section{padding:84px 0}
   .fleet-grid{grid-template-columns:1fr}
+  .fav-grid{grid-template-columns:1fr}
   .process-grid{grid-template-columns:1fr}
   .sig-grid{grid-template-columns:1fr 1fr}
   .foot-top{grid-template-columns:1fr}
   .hero-ctas .btn{width:100%}
   .scroll-cue{display:none}
+  .featured-specs{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -465,6 +597,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
       <a href="#import">Import</a>
       <a href="#rachat">Rachat</a>
       <a href="#contact">Contact</a>
+      <a class="fav-trigger" href="#favoris" aria-label="Mes favoris"><span>Favoris</span><i class="fav-count" id="favCountNav">0</i></a>
     </nav>
     <a class="btn btn-or btn-sm header-cta" href="#contact" data-besoin="Essai privé">Prendre rendez-vous</a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
@@ -484,7 +617,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
   <div class="menu-foot container">
     <span>47, Avenue de l'Indépendance — Analakely, 101 Antananarivo</span>
     <span>Visite sur rendez-vous, 7 j/7</span>
-    <a href="tel:+261341234567">+261 34 12 34 567</a>
+    <a href="tel:+261381461105">+261 38 14 611 05</a>
   </div>
 </div>
 
@@ -554,6 +687,32 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
     </div>
   </div>
 
+  <!-- ================= PIÈCE MAÎTRESSE ================= -->
+  <section class="section featured" aria-labelledby="featured-title">
+    <div class="container featured-grid">
+      <figure class="featured-media reveal">
+        <span class="frame" aria-hidden="true"></span>
+        <span class="featured-badge">Pièce maîtresse</span>
+        <img src="assets/img/fleet/porsche-911.jpg" alt="Porsche 911, la pièce maîtresse du showroom AURAN MOTORS" width="1920" height="1200" fetchpriority="high">
+      </figure>
+      <div class="featured-copy reveal" style="--d:.1s">
+        <p class="eyebrow">Pièce maîtresse</p>
+        <h2 id="featured-title">La voiture au centre de la scène.</h2>
+        <p style="margin-top:18px;color:var(--cendre)">Toutes les voitures du showroom ne se valent pas — il y en a une qui ne sert pas qu'à traverser la ville. Elle est le point d'entrée de la collection, exposée comme elle doit l'être, éclairée, prête.</p>
+        <div class="featured-specs">
+          <div class="f-spec"><b>Modèle</b><span>Porsche 911</span></div>
+          <div class="f-spec"><b>Énergie</b><span>Essence</span></div>
+          <div class="f-spec"><b>Moteur</b><span>3,0 l boxer bi-turbo</span></div>
+          <div class="f-spec"><b>Boîte</b><span>Automatique (PDK)</span></div>
+        </div>
+        <div class="featured-ctas">
+          <a class="btn btn-or" href="#contact" data-besoin="Essai privé">Venir la découvrir</a>
+          <button class="btn btn-ghost" id="featuredFavBtn" data-fav="porsche-911" aria-pressed="false">L'ajouter à mes favoris</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= LA MAISON ================= -->
   <section class="section maison" id="maison" aria-labelledby="maison-title">
     <div class="container maison-grid">
@@ -594,9 +753,18 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
 
       <div class="fleet-grid" id="fleetGrid">
 
-        <article class="fleet-card reveal" data-cat="sport" style="--d:0s">
+        <article class="fleet-card reveal" data-cat="sport" data-id="alpine-a110" data-name="Alpine A110" data-type="Coupé sportif" data-power="252 ch" data-engine="1,8 l turbo" data-gear="Auto double embrayage" data-energy="Essence" style="--d:0s">
           <div class="media">
             <span class="f-card-tag">Légèreté</span>
+            <div class="f-card-actions">
+              <button class="fa-btn fav" data-fav="alpine-a110" data-label="Alpine A110" aria-pressed="false" aria-label="Ajouter Alpine A110 aux favoris">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21 C5 15.5 3.5 11.5 3.5 8.5 A4 4 0 0 1 12 6.8 A4 4 0 0 1 20.5 8.5 C20.5 11.5 19 15.5 12 21 Z"/></svg>
+              </button>
+              <button class="fa-btn cmp" data-cmp="alpine-a110" aria-label="Comparer l'Alpine A110">
+                <svg class="c-add" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>
+                <svg class="c-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 12.5 L10.5 17 L18 8"/></svg>
+              </button>
+            </div>
             <img src="assets/img/fleet/alpine-a110.jpg" alt="Alpine A110, coupé sportif français, au showroom AURAN MOTORS à Antananarivo" width="1920" height="1200" loading="lazy" decoding="async">
           </div>
           <div class="f-card-body">
@@ -608,9 +776,18 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
           </div>
         </article>
 
-        <article class="fleet-card reveal" data-cat="electrique" style="--d:.06s">
+        <article class="fleet-card reveal" data-cat="electrique" data-id="audi-etron-gt" data-name="Audi e-tron GT" data-type="GT électrique" data-power="476 ch" data-engine="2 moteurs électriques" data-gear="Quattro automatique" data-energy="Électrique" style="--d:.06s">
           <div class="media">
             <span class="f-card-tag">800 volts</span>
+            <div class="f-card-actions">
+              <button class="fa-btn fav" data-fav="audi-etron-gt" data-label="Audi e-tron GT" aria-pressed="false" aria-label="Ajouter l'Audi e-tron GT aux favoris">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21 C5 15.5 3.5 11.5 3.5 8.5 A4 4 0 0 1 12 6.8 A4 4 0 0 1 20.5 8.5 C20.5 11.5 19 15.5 12 21 Z"/></svg>
+              </button>
+              <button class="fa-btn cmp" data-cmp="audi-etron-gt" aria-label="Comparer l'Audi e-tron GT">
+                <svg class="c-add" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>
+                <svg class="c-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 12.5 L10.5 17 L18 8"/></svg>
+              </button>
+            </div>
             <img src="assets/img/fleet/audi-etron-gt.jpg" alt="Audi e-tron GT, GT électrique, exposée au showroom AURAN MOTORS à Antananarivo" width="1920" height="1200" loading="lazy" decoding="async">
           </div>
           <div class="f-card-body">
@@ -622,10 +799,19 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
           </div>
         </article>
 
-        <article class="fleet-card reveal" data-cat="electrique" style="--d:.12s">
+        <article class="fleet-card reveal square" data-cat="electrique" data-id="mercedes-eqs" data-name="Mercedes-Benz EQS" data-type="Berline GT" data-power="~333 ch" data-engine="2 moteurs électriques" data-gear="Automatique" data-energy="Électrique" style="--d:.12s">
           <div class="media">
             <span class="f-card-tag">Luxe électrique</span>
-            <img src="assets/img/fleet/mercedes-eqs.jpg" alt="Mercedes-Benz EQS, berline électrique, au showroom AURAN MOTORS à Antananarivo" width="1920" height="1200" loading="lazy" decoding="async">
+            <div class="f-card-actions">
+              <button class="fa-btn fav" data-fav="mercedes-eqs" data-label="Mercedes-Benz EQS" aria-pressed="false" aria-label="Ajouter la Mercedes-Benz EQS aux favoris">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21 C5 15.5 3.5 11.5 3.5 8.5 A4 4 0 0 1 12 6.8 A4 4 0 0 1 20.5 8.5 C20.5 11.5 19 15.5 12 21 Z"/></svg>
+              </button>
+              <button class="fa-btn cmp" data-cmp="mercedes-eqs" aria-label="Comparer la Mercedes-Benz EQS">
+                <svg class="c-add" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>
+                <svg class="c-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 12.5 L10.5 17 L18 8"/></svg>
+              </button>
+            </div>
+            <img src="assets/img/fleet/mecedes-benz.jpg" alt="Mercedes-Benz EQS, berline électrique, au showroom AURAN MOTORS à Antananarivo" width="1200" height="1200" loading="lazy" decoding="async">
           </div>
           <div class="f-card-body">
             <p class="mk">Berline GT · Électrique</p>
@@ -636,9 +822,18 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
           </div>
         </article>
 
-        <article class="fleet-card reveal" data-cat="sport" style="--d:0s">
+        <article class="fleet-card reveal portrait" data-cat="sport" data-id="porsche-911" data-name="Porsche 911" data-type="Coupé sportif" data-power="385 ch" data-engine="3,0 l boxer bi-turbo" data-gear="Auto (PDK)" data-energy="Essence" style="--d:0s">
           <div class="media">
             <span class="f-card-tag">L'icône</span>
+            <div class="f-card-actions">
+              <button class="fa-btn fav" data-fav="porsche-911" data-label="Porsche 911" aria-pressed="false" aria-label="Ajouter la Porsche 911 aux favoris">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21 C5 15.5 3.5 11.5 3.5 8.5 A4 4 0 0 1 12 6.8 A4 4 0 0 1 20.5 8.5 C20.5 11.5 19 15.5 12 21 Z"/></svg>
+              </button>
+              <button class="fa-btn cmp" data-cmp="porsche-911" aria-label="Comparer la Porsche 911">
+                <svg class="c-add" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>
+                <svg class="c-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 12.5 L10.5 17 L18 8"/></svg>
+              </button>
+            </div>
             <img src="assets/img/fleet/porsche-911.jpg" alt="Porsche 911, coupé sportif à moteur arrière, au showroom AURAN MOTORS à Antananarivo" width="1920" height="1200" loading="lazy" decoding="async">
           </div>
           <div class="f-card-body">
@@ -650,9 +845,18 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
           </div>
         </article>
 
-        <article class="fleet-card reveal" data-cat="electrique" style="--d:.06s">
+        <article class="fleet-card reveal portrait" data-cat="electrique" data-id="tesla-model-3" data-name="Tesla Model 3" data-type="Berline" data-power="~279 ch" data-engine="Moteur électrique" data-gear="Automatique" data-energy="Électrique" style="--d:.06s">
           <div class="media">
             <span class="f-card-tag">Du quotidien</span>
+            <div class="f-card-actions">
+              <button class="fa-btn fav" data-fav="tesla-model-3" data-label="Tesla Model 3" aria-pressed="false" aria-label="Ajouter la Tesla Model 3 aux favoris">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21 C5 15.5 3.5 11.5 3.5 8.5 A4 4 0 0 1 12 6.8 A4 4 0 0 1 20.5 8.5 C20.5 11.5 19 15.5 12 21 Z"/></svg>
+              </button>
+              <button class="fa-btn cmp" data-cmp="tesla-model-3" aria-label="Comparer la Tesla Model 3">
+                <svg class="c-add" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>
+                <svg class="c-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 12.5 L10.5 17 L18 8"/></svg>
+              </button>
+            </div>
             <img src="assets/img/fleet/tesla-model-3.jpg" alt="Tesla Model 3, berline électrique, au showroom AURAN MOTORS à Antananarivo" width="1920" height="1200" loading="lazy" decoding="async">
           </div>
           <div class="f-card-body">
@@ -664,6 +868,23 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
           </div>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAVORIS ================= -->
+  <section class="section fav-section" id="favoris" aria-labelledby="favoris-title">
+    <div class="container">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Vos favoris</p>
+        <h2 id="favoris-title">Votre shortlist, en un regard.</h2>
+        <p class="intro">Enregistrez les modèles qui vous retiennent — ils restent ici, sur cet appareil, jusqu'à votre prochaine visite au showroom.</p>
+      </div>
+      <div class="reveal">
+        <div class="fav-grid" id="favGrid"></div>
+        <div class="fav-empty" id="favEmpty">
+          <p><b>Aucun favori pour l'instant.</b> Touchez le cœur sur une voiture de la collection pour la retrouver ici.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -782,6 +1003,18 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
     </div>
   </section>
 
+  <!-- ================= CTA ================= -->
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container reveal">
+      <h2 id="cta-title">Prêt à prendre <em>le volant ?</em></h2>
+      <p>Un créneau privé, la voiture qui vous attend et un dossier complet. Le reste se passe derrière le volant — et à votre rythme.</p>
+      <div class="cta-actions">
+        <a class="btn btn-or" href="#contact" data-besoin="Essai privé">Réserver ma visite</a>
+        <a class="btn btn-ghost" href="#collection">Revoir la collection</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= CONTACT ================= -->
   <section class="section contact" id="contact" aria-labelledby="contact-title">
     <div class="container contact-grid">
@@ -797,15 +1030,11 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
           </div>
           <div class="c-item">
             <svg class="ic" viewBox="0 0 22 22" aria-hidden="true" fill="none"><path d="M6 3 H9 L10.5 7.5 L8 9 C9.5 12 13 15.5 16 14 L17.5 11.5 L22 13 V16 C22 18 20 20 17.5 20 C10 19 3 12 2 4.5 C2 2 4 1 6 1 Z" stroke="currentColor" stroke-width="1.4"/></svg>
-            <div><b>Téléphone</b><a href="tel:+261341234567">+261 34 12 34 567</a><span class="sub">Ligne directe showroom</span></div>
+            <div><b>Téléphone</b><a href="tel:+261334202882">+261 33 42 028 82</a><span class="sub">Ligne directe showroom</span></div>
           </div>
           <div class="c-item">
             <svg class="ic" viewBox="0 0 22 22" aria-hidden="true" fill="none"><path d="M3 6 L11 12 L19 6" stroke="currentColor" stroke-width="1.4"/><rect x="3" y="4" width="16" height="14" stroke="currentColor" stroke-width="1.4"/></svg>
-            <div><b>Email</b><a href="mailto:contact@auranmotors.mg">contact@auranmotors.mg</a></div>
-          </div>
-          <div class="c-item">
-            <svg class="ic" viewBox="0 0 22 22" aria-hidden="true" fill="none"><path d="M11 2 C6 2 3 6 3 10.5 C3 13 4.5 15.5 6.5 18 L5 21 L8 19 C9.5 19.7 10.5 19.8 11 19.8 C16 19.8 19 16 19 10.5 C19 6 16 2 11 2 Z" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="11.5" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>
-            <div><b>WhatsApp</b><a href="https://wa.me/261341234567" rel="noopener" target="_blank">+261 34 12 34 567</a><span class="sub">Réponse rapide aux heures d'ouverture</span></div>
+            <div><b>Email</b><a href="mailto:joba@gmail.com">jobanitah@gmail.com</a></div>
           </div>
           <div class="c-item">
             <svg class="ic" viewBox="0 0 22 22" aria-hidden="true" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.4"/><path d="M11 6 V11 L14.5 13" stroke="currentColor" stroke-width="1.4"/></svg>
@@ -895,6 +1124,11 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
       </a>
       <p>Showroom de voitures premium et exclusives à Antananarivo. Coupés sportifs, GT et grandes électriques — sélection sévère, préparation en atelier, visite privée.</p>
       <p class="foot-tag">Fiarakodia miavaka.</p>
+      <div class="socials" style="margin-top:26px">
+        <a href="https://www.instagram.com/" rel="noopener" target="_blank" aria-label="Instagram AURAN MOTORS"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.facebook.com/" rel="noopener" target="_blank" aria-label="Facebook AURAN MOTORS"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M14 8 H16.5 V5 H14 C11.8 5 10 6.8 10 9 v2.5 H8 V14.5 H10 V21 H13 V14.5 H15.5 L16 11.5 H13 V9 C13 8.4 13.4 8 14 8 Z"/></svg></a>
+        <a href="https://www.linkedin.com/" rel="noopener" target="_blank" aria-label="LinkedIn AURAN MOTORS"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11 V17 M8 8 V8.01 M12.5 17 V13.5 C12.5 12.1 13.6 11 15 11 C16.4 11 17.5 12.1 17.5 13.5 V17"/></svg></a>
+      </div>
     </div>
     <nav class="foot-col" aria-label="Navigation du pied de page">
       <h4>Navigation</h4>
@@ -910,8 +1144,8 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
       <h4>Contact</h4>
       <address>
         <span>47, Avenue de l'Indépendance<br>Analakely — 101 Antananarivo</span>
-        <a href="tel:+261341234567">+261 34 12 34 567</a>
-        <a href="mailto:contact@auranmotors.mg">contact@auranmotors.mg</a>
+        <a href="tel:+261334202882">+261 33 42 028 82</a>
+        <a href="mailto:jobanitah@gmail.com">jobanitah@gmail.com</a>
       </address>
     </div>
     <div class="foot-col">
@@ -935,6 +1169,28 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
     <p>Sélection privée · Préparation atelier · Import mondial</p>
   </div>
 </footer>
+
+<!-- ================= COMPARAISON (barre + modal) ================= -->
+<div class="compare-bar" id="compareBar" role="region" aria-label="Voitures à comparer">
+  <span class="cb-label">Comparer</span>
+  <div class="cb-items" id="cbItems"></div>
+  <button class="btn btn-or btn-sm" id="cbOpen" disabled>Comparer (0)</button>
+</div>
+
+<div class="compare-modal" id="compareModal" role="dialog" aria-modal="true" aria-labelledby="cmTitle" hidden>
+  <div class="cm-box">
+    <div class="cm-head">
+      <div><h3 id="cmTitle">Face à face</h3><p class="small">Cinq lignes qui comptent, sur le même tableau.</p></div>
+      <button class="cm-close" id="cmClose" aria-label="Fermer la comparaison">✕</button>
+    </div>
+    <div class="cm-cols" id="cmCols"></div>
+  </div>
+</div>
+
+<!-- ================= WHATSAPP ================= -->
+<a class="wa-fab" href="https://wa.me/261381461105?text=Bonjour%20AURAN%20MOTORS%2C%20je%20souhaiterais%20prendre%20rendez-vous%20au%20showroom." rel="noopener" target="_blank" aria-label="Discuter sur WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.4 15.15L2 22l5-1.3A9.9 9.9 0 1 0 12.04 2Zm5.9 14.03c-.25.7-1.45 1.33-2 1.38-.54.05-1.03.24-3.47-.72-2.95-1.18-4.8-4.16-4.95-4.36-.14-.2-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.28.57-.35.76-.35l.54.01c.18.01.41-.06.64.49.25.58.83 2 .91 2.15.07.13.12.3.02.48-.1.2-.15.3-.3.47l-.45.53c-.15.15-.3.31-.13.6.18.28.78 1.29 1.68 2.09 1.16 1.03 2.13 1.36 2.43 1.5.3.15.48.12.65-.07.17-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.72.8 2.02.95.3.15.5.23.57.35.07.12.07.67-.18 1.35Z"/></svg>
+</a>
 
 <script>
 (function(){
@@ -1045,7 +1301,7 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
 
       if(nom.value.trim().length < 2) errors.nom = "Indiquez votre nom complet.";
       var telClean = tel.value.replace(/[^\d+]/g, "");
-      if(telClean.length < 9) errors.tel = "Indiquez un numéro valide (ex. +261 34 12 34 567).";
+      if(telClean.length < 9) errors.tel = "Indiquez un numéro valide (ex. +261 38 14 611 05).";
       if(email.value.trim() !== "" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()))
         errors.email = "Adresse email invalide.";
       if(!besoinF.value) errors.besoin = "Précisez votre demande.";
@@ -1075,6 +1331,168 @@ body.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45
       if(box) box.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
     });
   }
+
+  /* ---------- favoris ---------- */
+  function lsGet(k,d){ try{ return JSON.parse(localStorage.getItem(k)) || d; }catch(e){ return d; } }
+  function lsSet(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+
+  var favs = lsGet("am_favs", []);
+  var favGridEl = document.getElementById("favGrid");
+  var favEmptyEl = document.getElementById("favEmpty");
+  var favCountNav = document.getElementById("favCountNav");
+  var featuredFavBtn = document.getElementById("featuredFavBtn");
+
+  function favCard(id){ return document.querySelector('.fleet-card[data-id="'+id+'"]'); }
+
+  function renderFavs(){
+    [].forEach.call(document.querySelectorAll("[data-fav]"), function(b){
+      var on = favs.indexOf(b.getAttribute("data-fav")) !== -1;
+      b.setAttribute("aria-pressed", String(on));
+      b.classList.toggle("on", on);
+      if(!reduced) b.style.animation = on ? "favPop .4s var(--ease)" : "";
+    });
+    if(favCountNav){ favCountNav.textContent = String(favs.length); favCountNav.classList.toggle("on", favs.length > 0); }
+    if(featuredFavBtn) featuredFavBtn.textContent = favs.indexOf("porsche-911") !== -1 ? "Retiré de mes favoris" : "L'ajouter à mes favoris";
+    if(!favGridEl) return;
+    favGridEl.innerHTML = "";
+    favs.forEach(function(id){
+      var c = favCard(id); if(!c) return;
+      var h3 = c.querySelector("h3");
+      var tag = c.querySelector(".f-card-tag");
+      var img = c.querySelector(".media img");
+      var el = document.createElement("article");
+      el.className = "fleet-card" + (c.classList.contains("portrait") ? " portrait" : "");
+      el.innerHTML =
+        '<div class="media">' +
+          (tag ? '<span class="f-card-tag">'+tag.textContent+'</span>' : '') +
+          '<img src="'+img.src+'" alt="'+img.alt+'" loading="lazy" decoding="async">' +
+        '</div>' +
+        '<div class="f-card-body">' +
+          '<p class="mk">Votre sélection</p>' +
+          '<h3>'+(h3?h3.textContent:'')+'</h3>' +
+          '<div class="f-price"><span class="mga">Sur demande</span><span class="eur">dossier complet sur rendez-vous</span></div>' +
+          '<p class="f-card-foot"><a class="btn btn-ghost btn-sm" href="#contact" data-besoin="Offre parc">Voir le dossier <svg width="16" height="10" viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h14M10 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a></p>' +
+        '</div>';
+      var wrap = document.createElement("div");
+      wrap.className = "f-card-actions";
+      wrap.style.opacity = "1"; wrap.style.transform = "none";
+      var rmv = document.createElement("button");
+      rmv.className = "fa-btn fav";
+      rmv.setAttribute("data-fav", id);
+      rmv.setAttribute("aria-label", "Retirer "+(h3?h3.textContent:id)+" des favoris");
+      rmv.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21 C5 15.5 3.5 11.5 3.5 8.5 A4 4 0 0 1 12 6.8 A4 4 0 0 1 20.5 8.5 C20.5 11.5 19 15.5 12 21 Z"/></svg>';
+      wrap.appendChild(rmv);
+      el.querySelector(".media").appendChild(wrap);
+      el.querySelector(".media").style.overflow = "hidden";
+      favGridEl.appendChild(el);
+    });
+    if(favEmptyEl) favEmptyEl.classList.toggle("hidden", favs.length > 0);
+    favGridEl.classList.toggle("hidden", favs.length === 0);
+  }
+  function toggleFav(id){
+    var i = favs.indexOf(id);
+    if(i === -1){ favs.push(id); } else { favs.splice(i,1); }
+    lsSet("am_favs", favs);
+    renderFavs();
+  }
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-fav]");
+    if(!b) return;
+    e.preventDefault();
+    toggleFav(b.getAttribute("data-fav"));
+  });
+  renderFavs();
+
+  /* ---------- comparaison ---------- */
+  var cmps = lsGet("am_cmp", []);
+  var cardById = {};
+  [].forEach.call(document.querySelectorAll(".fleet-card"), function(c){
+    cardById[c.getAttribute("data-id")] = c;
+  });
+  var cbBar = document.getElementById("compareBar");
+  var cbItems = document.getElementById("cbItems");
+  var cbOpen = document.getElementById("cbOpen");
+  var cmModal = document.getElementById("compareModal");
+  var cmCols = document.getElementById("cmCols");
+  var cmClose = document.getElementById("cmClose");
+  var arrowSvg = '<svg width="16" height="10" viewBox="0 0 16 10" aria-hidden="true"><path d="M0 5h14M10 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
+
+  function renderCompare(){
+    [].forEach.call(document.querySelectorAll("[data-cmp]"), function(b){
+      var on = cmps.indexOf(b.getAttribute("data-cmp")) !== -1;
+      b.classList.toggle("cmp-on", on);
+      b.setAttribute("aria-pressed", String(on));
+    });
+    if(!cbItems) return;
+    cbItems.innerHTML = "";
+    cmps.forEach(function(id){
+      var c = cardById[id]; if(!c) return;
+      var img = c.querySelector(".media img");
+      var w = document.createElement("span"); w.className = "cb-item";
+      var ic = document.createElement("img"); ic.src = img.src; ic.alt = ""; ic.loading = "lazy";
+      var rm = document.createElement("button"); rm.innerHTML = "✕";
+      rm.setAttribute("aria-label", "Retirer "+(c.querySelector("h3")?c.querySelector("h3").textContent:id)+" de la comparaison");
+      rm.addEventListener("click", function(){ removeCmp(id); });
+      w.appendChild(ic); w.appendChild(rm);
+      cbItems.appendChild(w);
+    });
+    cbBar.classList.toggle("show", cmps.length > 0);
+    if(cbOpen){ cbOpen.disabled = cmps.length < 2; cbOpen.textContent = "Comparer ("+cmps.length+")"; }
+  }
+  function toggleCmp(id){
+    var i = cmps.indexOf(id);
+    if(i === -1){ if(cmps.length < 3) cmps.push(id); }
+    else { cmps.splice(i,1); }
+    lsSet("am_cmp", cmps);
+    renderCompare();
+    if(cmModal && cmModal.classList.contains("open")){ cmps.length < 2 ? closeModal() : openModal(); }
+  }
+  function removeCmp(id){
+    var i = cmps.indexOf(id);
+    if(i !== -1) cmps.splice(i,1);
+    lsSet("am_cmp", cmps);
+    renderCompare();
+    if(cmModal && cmModal.classList.contains("open")){ cmps.length < 2 ? closeModal() : openModal(); }
+  }
+  function openModal(){
+    if(!cmModal || cmps.length < 2) return;
+    cmCols.innerHTML = "";
+    cmps.forEach(function(id){
+      var c = cardById[id]; if(!c) return;
+      var img = c.querySelector(".media img");
+      var h3 = c.querySelector("h3");
+      var col = document.createElement("div"); col.className = "cm-col";
+      col.innerHTML =
+        '<div class="img-wrap"><img src="'+img.src+'" alt="'+img.alt+'" loading="lazy" decoding="async"></div>' +
+        '<div><p class="mk">'+(c.getAttribute("data-type")||"")+'</p><h4>'+(h3?h3.textContent:'')+'</h4></div>' +
+        '<div class="cm-spec"><b>Énergie</b><span>'+(c.getAttribute("data-energy")||"—")+'</span></div>' +
+        '<div class="cm-spec"><b>Puissance</b><span>'+(c.getAttribute("data-power")||"—")+'</span></div>' +
+        '<div class="cm-spec"><b>Moteur</b><span>'+(c.getAttribute("data-engine")||"—")+'</span></div>' +
+        '<div class="cm-spec"><b>Boîte</b><span>'+(c.getAttribute("data-gear")||"—")+'</span></div>' +
+        '<div class="cm-spec"><b>Carrosserie</b><span>'+(c.getAttribute("data-type")||"—")+'</span></div>';
+      var foot = document.createElement("div"); foot.className = "cm-col-footer";
+      foot.innerHTML = '<a class="btn btn-ghost btn-sm" href="#contact" data-besoin="Offre parc">Voir le dossier '+arrowSvg+'</a>';
+      col.appendChild(foot);
+      cmCols.appendChild(col);
+    });
+    cmModal.classList.add("open"); cmModal.removeAttribute("hidden");
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(){
+    if(!cmModal) return;
+    cmModal.classList.remove("open"); cmModal.setAttribute("hidden","");
+    document.body.style.overflow = "";
+  }
+  [].forEach.call(document.querySelectorAll("[data-cmp]"), function(b){
+    b.addEventListener("click", function(){ toggleCmp(b.getAttribute("data-cmp")); });
+  });
+  if(cbOpen) cbOpen.addEventListener("click", openModal);
+  if(cmClose) cmClose.addEventListener("click", closeModal);
+  if(cmModal) cmModal.addEventListener("click", function(e){ if(e.target === cmModal) closeModal(); });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") closeModal();
+  });
+  renderCompare();
 
   /* year */
   var y = document.getElementById("year");
